@@ -1,0 +1,109 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample api docs for l-sample.",
+        "title": "l-sample API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "paths": {
+        "/accounts/{id}": {
+            "get": {
+                "description": "get string by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Show a account",
+                "parameters": [
+                    {
+                        "maximum": 10,
+                        "type": "integer",
+                        "description": "Account ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "enum": [
+                            "\"z\"",
+                            "\"l\"",
+                            "\"w\""
+                        ],
+                        "type": "string",
+                        "description": "Account name",
+                        "name": "name",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Account"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/main.HttpError"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/main.HttpError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/main.HttpError"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/main.HttpError"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Account": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "zlw"
+                },
+                "sex": {
+                    "type": "string",
+                    "enum": [
+                        "b",
+                        "g"
+                    ]
+                }
+            }
+        },
+        "main.HttpError": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 1001
+                },
+                "msg": {
+                    "type": "string",
+                    "example": "server error"
+                }
+            }
+        }
+    }
+}

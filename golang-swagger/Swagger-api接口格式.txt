@@ -1,0 +1,45 @@
+配置接口信息---定义再controller
+// ShowAccount godoc
+// @Summary      Show an account		       	   该操作的简短摘要
+// @Description  get string by ID                                     	   操作行为的详细说明
+// @Tags         accounts			       	   每个API操作的标签列表，以逗号分隔
+// @Accept       json				         	   API 可以使用的 MIME 类型列表
+// @Produce      json			         	   API可以生成的MIME类型的列表
+// @Param        id   path  int  true  "Account ID"  default(1)        用空格分隔的参数。参数名(*)-参数类型-数据类型-是否严格模式-内容属性(可选)-字段(字段名类型)	
+// @security     				     	   每个API操作的安全性
+// @Success      200  {object}  model.Account	        	   以空格分隔的成功响应。响应状态码-{参数对象类型}-对象的数据类型-说明
+// @Failure      400  {object}  httputil.HTTPError	        	   以空格分隔的故障响应。响应状态码-{参数对象类型}-对象的数据类型-说明
+// @Failure      404  {object}  httputil.HTTPError	         	   以空格分隔的故障响应。响应状态码-{参数对象类型}-对象的数据类型-说明
+// @Failure      500  {object}  httputil.HTTPError	         	   以空格分隔的故障响应。响应状态码-{参数对象类型}-对象的数据类型-说明
+// @header      200,400,default  {string}  Token  "token"    	   以空格分隔的头字段。响应状态码-{参数类型}-对象的数据类型-说明
+// @Router       /accounts/{id} [get]		         	   以空格分隔的路径定义。路径-[http请求方法]
+
+---
+参数类型：
+query
+path
+header
+body
+formData
+数据类型：
+string (string)
+integer (int, uint, uint32, uint64)
+number (float32)
+boolean (bool)
+user defined struct
+字段名(字段类型)：
+default		默认值，当用户不指定参数时的默认值，如default(A)
+enums 		枚举值，如Enums(1.1, 1.2, 1.3)
+maximum		最大数字，严格模式下，实例必须小于该值，非严格模式，可等于，如minimum(1)    maximum(10)
+minimum	                最小数字，严格模式下，实例必须大于该值，非严格模式，可等于，如minimum(1)    maximum(10)
+maxLength	最长长度，严格模式下，字符串实例的长度小于该关键字，非严格模式，可等于，minlength(5)  maxlength(10)
+minLength	最短长度，严格模式下，字符串实例的长度大于该关键字，非严格模式，可等于，minlength(5)  maxlength(10)
+format                      实例的数据类型的扩展格式，如Format(email)
+collectionFormat	指定query数组参数的格式。如collectionFormat(multi)
+-csv - 逗号分隔值 foo,bar --->默认值是 csv
+-ssv - 空格分隔值 foo bar
+-tsv - 制表符分隔值 foo\tbar
+-pipes - 管道符分隔值 foo|bar
+-multi - 对应于多个参数实例，而不是单个实例 foo=bar＆foo=baz 的多个值。这仅对“query”或“formData”中的参数有效
+
+

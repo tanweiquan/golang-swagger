@@ -1,0 +1,74 @@
+basePath: /api/v1
+definitions:
+  main.Account:
+    properties:
+      name:
+        example: zlw
+        type: string
+      sex:
+        enum:
+        - b
+        - g
+        type: string
+    type: object
+  main.HttpError:
+    properties:
+      code:
+        example: 1001
+        type: integer
+      msg:
+        example: server error
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample api docs for l-sample.
+  title: l-sample API
+  version: "1.0"
+paths:
+  /accounts/{id}:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: Account ID
+        in: path
+        maximum: 10
+        name: id
+        required: true
+        type: integer
+      - description: Account name
+        enum:
+        - '"z"'
+        - '"l"'
+        - '"w"'
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Account'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/main.HttpError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.HttpError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.HttpError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/main.HttpError'
+      summary: Show a account
+swagger: "2.0"
